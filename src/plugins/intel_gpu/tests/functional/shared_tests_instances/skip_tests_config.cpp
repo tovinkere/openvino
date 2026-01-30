@@ -193,6 +193,8 @@ std::vector<std::string> disabledTestPatterns() {
             // by calc abs_threshold with expected value
             R"(.*smoke_RemoteTensor/OVRemoteTensorBatched_Test.NV12toBGR_buffer/(num_batch_4|num_batch_2).*)",
             R"(.*smoke_Check/ConstantResultSubgraphTest.Inference/SubgraphType=SINGLE_COMPONENT_IS=\[1,3,10,10\]_IT=i16_Device=GPU.*)",
+            // Issue: 126388
+            R"(.*smoke_outputTensorShapesForDynamicInput.*)",
 #endif
     };
     if (!isGPU1Present()) {
@@ -249,7 +251,6 @@ std::vector<std::string> disabledTestPatterns() {
         returnVal.push_back(R"(.*smoke_ConvolutionLayerGPUTest_3D_tensor_basic/ConvolutionLayerGPUTest..*)");
         returnVal.push_back(R"(.*smoke_MatmulWeightsDecompressionQuantizeConvolution_basic.*)");
         returnVal.push_back(R"(.*smoke_Nms9LayerTest/Nms9LayerTest.Inference/num_batches=2_num_boxes=50.*)");
-        returnVal.push_back(R"(.*smoke_ScaledAttnDynamic4D_GPU/ScaledAttnLayerGPUTest.CompareWithRefs/n.*)");
     } else {
         // CVS-172342
         returnVal.push_back(R"(.*smoke_MatMulCompressedWeights_3D_weight.*)");
